@@ -1,10 +1,10 @@
-# Project Title
+# Silencer Bot
 
-SilencerBot
+Discord bot for muting members
 
 ## Description
 
-SilencerBot is a Discord bot that can mute members in a specific channel to help manage online communities. It automatically scans the channel for members who have their voice activation on and restricts their ability to speak, instead a pop up appears with notification to turn the "Push To Talk" feature. This can prevent disruptive behavior and maintain order in the community.
+Discord bot that mutes voice activation in specific channels. Scans for members with voice activation on and prompts to use "Push To Talk" instead. Prevents disruptions and maintains order in the community.
 
 ## Getting Started
 
@@ -24,7 +24,7 @@ npm install
 
 - Before executing the program you should create a discord role that restricts members
 
-ex "muted"
+  - ex. "muted"
 
 ### Bot Commands
 
