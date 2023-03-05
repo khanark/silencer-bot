@@ -6,6 +6,10 @@ Discord bot for muting members
 
 Discord bot that mutes voice activation in specific channels. Scans for members with voice activation on and prompts to use "Push To Talk" instead. Prevents disruptions and maintains order in the community.
 
+## Disclaimer
+
+Please note that I am still in the process of developing the Discord bot and it may not function perfectly or as intended at all times. There may be bugs or glitches that I am still working to fix, and I appreciate your patience as I continue to improve and refine the bot.
+
 ## Getting Started
 
 ### Dependencies
@@ -54,7 +58,7 @@ npm install
 
 ### Executing program
 
-- To run the program install the npm package
+- To run the program write the following in the terminal
 
 ```bash
 npm start
@@ -62,11 +66,8 @@ npm start
 
 ## Help
 
-Any advise for common problems or issues.
-
-```
-command to run if program contains helper info
-```
+For any advise or common issues you can contact me on discord:
+**𝚔𝚑𝚊𝚗𝚊𝚛𝚔#8272**
 
 ## Authors
 
@@ -78,4 +79,4 @@ command to run if program contains helper info
 
 ## License
 
-This project is licensed under the [NAME HERE] License - see the LICENSE.md file for details
+Has no license
