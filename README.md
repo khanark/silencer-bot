@@ -19,6 +19,9 @@ Please note that I am still in the process of developing the Discord bot and it 
 
 ### Installing
 
+- Invite the bot to your server
+  [Silencer Bot](https://discord.com/api/oauth2/authorize?client_id=1081518265588797531&permissions=4398046511095&scope=bot/)
+
 - Clone the repo to your own computer
 - Open with Visual Studio Code or any other IDE/Code Editor
 
