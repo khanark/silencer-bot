@@ -67,17 +67,13 @@ client.on(Events.InteractionCreate, async interaction => {
 });
 
 client.on(Events.VoiceStateUpdate, (oldState, newState) => {
-  const member = newState.member; // Get the member who joined or left a voice channel
-
-  if (newState.channelID === botConfig.channelID) {
-    // Check if the member joined the monitored voice channel
-    const role = newState.guild.roles.cache.find(role => role.name === 'muted'); // Get the role by name
-
-    if (role) {
-      // Check if the role exists
-      member.roles.add(role); // Give the role to the member
-      console.log(`${member.user.tag} has been given the ${ROLE_NAME} role!`); // Log a message to the console
-    }
+  // Check if the member joined the specific channel
+  if (newState.channelId === botConfig.channelID) {
+    // check if the user is a global moderator
+    const roles = newState.member.roles.cache;
+    if (roles.some(r => r.name == process.env.ROLE_PERMISSIONS)) return;
+    // Add the role to the member
+    newState.member.roles.add(botConfig.roleID);
   }
 });
 

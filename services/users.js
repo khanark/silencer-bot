@@ -1,5 +1,5 @@
 const fs = require('fs/promises');
-const config = require('../config/config.json');
+const botConfig = require('../config/config.json');
 const env = require('dotenv');
 env.config();
 
@@ -14,13 +14,13 @@ const setNewPermissionRole = async role => {
 };
 
 const setChannelID = async id => {
-  config.channelID = id;
-  await writeFile(config);
+  botConfig.channelID = id;
+  await writeFile(botConfig);
 };
 
 const setRoleID = async id => {
-  config.roleID = id;
-  await writeFile(config);
+  botConfig.roleID = id;
+  await writeFile(botConfig);
 };
 
 const muteChannelMembers = async channel => {
@@ -29,27 +29,21 @@ const muteChannelMembers = async channel => {
     if (member.roles.cache.some(role => role.name == 'muted')) return;
     if (!member.roles.cache.some(role => process.env.ROLE_PERMISSIONS == role.name)) {
       currentMutes.push(member.displayName);
-      await member.roles.add(config.roleID);
+      await member.roles.add(botConfig.roleID);
     }
   });
   return currentMutes;
 };
 
 const unmuteChannelMembers = async channel => {
-  const currentMutes = [];
+  let currentUnmutedMembers = 0;
   channel.members.forEach(async member => {
     if (member.roles.cache.some(role => role.name == 'muted')) {
-      await member.roles.remove('1081882243296940072');
+      currentUnmutedMembers++;
+      await member.roles.remove(botConfig.roleID);
     }
-    // if (!member.roles.cache.some(role => channelMutes.botPermissionRoles.includes(role.name))) {
-    //   consosle.log(member.roles);
-    //   await member.roles.add('muted');
-    //   currentMutes.push(member.displayName);
-    //   // await member.voice.setMute(true);
-    // }
   });
-  // await writeFile(channelMutes);
-  // return currentMutes;
+  return currentUnmutedMembers;
 };
 
 module.exports = { setNewPermissionRole, muteChannelMembers, unmuteChannelMembers, setRoleID, setChannelID };
