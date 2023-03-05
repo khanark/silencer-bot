@@ -22,15 +22,15 @@ SilencerBot is a Discord bot that can mute members in a specific channel to help
 npm install
 ```
 
-Before executing the program you should create a discord role that restricts members
+- Before executing the program you should create a discord role that restricts members
 
-- ex "muted"
+ex "muted"
 
 ### Bot Commands
 
 - Bot configuration
-  channel_id (the id of the channel you want the bot to run)
-  role_id (the id of the role that the bot assigns to members)
+  - channel_id (the id of the channel you want the bot to run)
+  - role_id (the id of the role that the bot assigns to members)
 
 ```
 /config
