@@ -29,16 +29,12 @@ npm install
 ### Bot Commands
 
 - Bot configuration
-  - channel_id
-  ##
-  (the id of the voice channel you want the bot to run on)
-  ##
-  (Right click the voice channel and Copy ID)
-  - role_id
-  ##
-  (the id of the role that the bot assigns to members)
-  ##
-  (Server settings => Roles => More => Copy ID)
+  - channel_id  
+    (the id of the voice channel you want the bot to run on)  
+    (Right click the voice channel and Copy ID)
+  - role_id  
+    (the id of the role that the bot assigns to members)  
+    (Server settings => Roles => More => Copy ID)
 
 ```
 /config
