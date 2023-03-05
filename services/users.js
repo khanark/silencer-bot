@@ -1,10 +1,10 @@
 const fs = require('fs/promises');
-const config = require('../config.json');
+const config = require('../config/config.json');
 const env = require('dotenv');
 env.config();
 
 const writeFile = async file => {
-  await fs.writeFile('./config.json', JSON.stringify(file, null, 2));
+  await fs.writeFile('./config/config.json', JSON.stringify(file, null, 2));
 };
 
 const setNewPermissionRole = async role => {
