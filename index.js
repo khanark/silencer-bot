@@ -3,6 +3,7 @@ env.config();
 
 const fs = require('node:fs');
 const path = require('node:path');
+const botConfig = require('./config.json');
 
 const { Client, Collection, Events, GatewayIntentBits } = require('discord.js');
 const client = new Client({
@@ -45,7 +46,6 @@ for (const file of commandFiles) {
 
 client.on(Events.InteractionCreate, async interaction => {
   if (!interaction.isChatInputCommand()) return;
-  // console.log(interaction.member.roles);
 
   const command = interaction.client.commands.get(interaction.commandName);
 
@@ -66,14 +66,17 @@ client.on(Events.InteractionCreate, async interaction => {
   }
 });
 
-client.on(Events.VoiceStateUpdate, async (oldState, newState) => {
-  // Check if the user has left a voice channel
-  console.log(client.channelMutes);
-  if (oldState.channel.id != newState.channel.id) {
-    // Check if the user was muted
-    if (oldState.mute) {
-      // Unmute the user
-      await oldState.setMute(false);
+client.on(Events.VoiceStateUpdate, (oldState, newState) => {
+  const member = newState.member; // Get the member who joined or left a voice channel
+
+  if (newState.channelID === botConfig.channelID) {
+    // Check if the member joined the monitored voice channel
+    const role = newState.guild.roles.cache.find(role => role.name === 'muted'); // Get the role by name
+
+    if (role) {
+      // Check if the role exists
+      member.roles.add(role); // Give the role to the member
+      console.log(`${member.user.tag} has been given the ${ROLE_NAME} role!`); // Log a message to the console
     }
   }
 });
