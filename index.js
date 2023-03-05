@@ -75,6 +75,9 @@ client.on(Events.VoiceStateUpdate, (oldState, newState) => {
     // Add the role to the member
     newState.member.roles.add(botConfig.roleID);
   }
+  if (newState.channelId !== botConfig.channelID || newState.channelId === undefined) {
+    newState.member.roles.remove(botConfig.roleID);
+  }
 });
 
 client.once(Events.ClientReady, c => {
